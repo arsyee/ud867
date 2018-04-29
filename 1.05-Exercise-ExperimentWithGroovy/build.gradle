@@ -16,6 +16,9 @@ task stringsAndTypes {
     doLast {
         // TODO: Run `$ gradle sAT`
         println "Nice work abbreviating the task name"
+        
+        def foo = "bar"
+        println "$foo + foo = ${foo + "foo"}"
 
         // TODO: Create a variable named foo and assign it the value 4.2
 
@@ -52,10 +55,14 @@ task closures {
 task lists {
     doLast {
         // TODO: Declare a list containing 5 of your favorite candies
+        def list = ["red", "green", "yellow", "purple"]
         // HINT: Try searching for "groovy list literal"
 
         // TODO: Create a new list of your candies in all caps
         // HINT: http://mrhaki.blogspot.ca/2010/05/groovy-goodness-use-collect-with.html
+        list.each{println "$it"}
+        def LIST = list.collect{x -> "$x".toUpperCase()}
+        LIST.each{println "$it"}
 
         // TODO: Print each capital candy
 

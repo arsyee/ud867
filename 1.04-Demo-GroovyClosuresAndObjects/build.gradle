@@ -7,12 +7,25 @@ from the scope in which they're declared.
 
 */
 
-task groovy {}
+task groovy {
+    println "task groovy"
+    doLast {
+        println "performing task groovy"
+    }
+}
+
+task groovy2 {
+    println "task groovy2"
+    doLast {
+        println "performing task groovy2"
+    }
+}
 
 def foo = "One million dollars"
 def myClosure = {
     println "Hello from a closure"
     println "The value of foo is $foo"
+    foo = "redefined"
 }
 
 myClosure()

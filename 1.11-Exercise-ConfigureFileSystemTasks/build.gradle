@@ -24,3 +24,48 @@
     4. Create a task named "deleteHelp". This task should perform the following:
         a) Delete the "help" folder created by the "copyWeb" task.
 */
+
+task clean(type: Delete) {
+    doFirst { println "Cleaning..." }
+    
+    delete 'build'
+}
+
+task copyWeb(type: Copy) {
+    doFirst { println "Copying..." }
+    
+    group "Solution"
+ 
+    from("src/web") {
+        into '.'
+    }
+    
+    from("src/docs") {
+        include '*.txt'
+        into 'help'
+    }
+    
+    into 'build/web'
+}
+
+task bundleWeb(type: Zip) {
+    doFirst { println "Zipping..." }
+    
+    group "Solution"
+    dependsOn copyWeb
+    
+    baseName = 'web'
+    destinationDir = file('build')
+
+    from 'build/web'
+    exclude 'images'
+}
+
+task unpackBundle(type: Copy) {
+    doFirst { println "Unzipping..." }
+    group "Solution"
+    dependsOn bundleWeb
+    
+    from zipTree(file('build/web.zip'))
+    into 'build/exploded'
+}

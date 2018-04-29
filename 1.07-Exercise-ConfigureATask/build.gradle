@@ -18,3 +18,26 @@ Hint: Don't forget about the solution file!
 https://docs.gradle.org/current/dsl/org.gradle.api.Task.html#org.gradle.api.Task:description
 
 */
+
+task hello {
+    description "Hello Task"
+    group "Greeting"
+    doLast {
+        print "Hello World!"
+    }
+}
+
+task hola {
+    description "Hola Task"
+    group "Greeting"
+    doLast {
+        print "Hola World!"
+    }
+}
+
+task blah {
+    description "Blah Task"
+    doLast {
+        print "Blah, blah..."
+    }
+}
