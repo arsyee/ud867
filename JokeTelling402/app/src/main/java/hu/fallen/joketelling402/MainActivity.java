@@ -6,7 +6,7 @@ import android.widget.TextView;
 
 import hu.fallen.jokesmith.JokeSmith;
 
-public class JokeActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
